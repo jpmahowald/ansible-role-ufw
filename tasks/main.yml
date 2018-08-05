@@ -1,0 +1,26 @@
+---
+
+- name: ufw enabled reloads the firewall
+  ufw:
+    state: enabled
+
+- name: Try host connection
+  block:
+
+  - wait_for_connection:                  
+
+  - name: Test port 22
+    become: False
+    wait_for:
+      port: '{{ ansible_port|default(22) }}'
+      host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+      search_regex: SSH
+      timeout: 10
+    connection: local
+
+  rescue:
+  - name: Disable firewall 
+    ufw:
+      state: reset
+
+

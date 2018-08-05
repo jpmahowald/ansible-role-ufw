@@ -1,0 +1,20 @@
+galaxy_info:
+  author: John Mahowald
+  description: Safe-ish UFw firewall apply
+
+  license: GPLv3
+
+  min_ansible_version: 2.3
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - bionic
+
+  galaxy_tags:
+  - firewall
+  - ufw
+
+dependencies: []
+
+
